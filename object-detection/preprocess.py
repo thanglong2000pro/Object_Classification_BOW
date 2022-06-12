@@ -19,7 +19,7 @@ import os
 import cv2
 
 # đọc folder gốc
-file_names = os.listdir('coil-100-original')
+file_names = os.listdir('dataset/coil-100/coil-100')
 # class_names = ['obj1', 'obj2', 'obj3', 'obj4', 'obj5', 'obj6', 'obj7', 'obj8', 'obj9', 'obj10',
 # 'obj11', 'obj12', 'obj13', 'obj14', 'obj15', 'obj16', 'obj17', 'obj18', 'obj19', 'obj20',
 # 'obj21', 'obj22', 'obj23', 'obj24', 'obj25', 'obj26', 'obj27', 'obj28', 'obj29', 'obj30',
@@ -43,14 +43,14 @@ def get_class_name(file_name):
 
 # phân chia vào folder train/test tỉ lệ 80/20
 for file_name in file_names:
-    img = cv2.imread(os.path.join('coil-100-original', file_name))
+    img = cv2.imread(os.path.join('dataset/coil-100/coil-100', file_name))
     class_name = get_class_name(file_name)
     if train_test_count < 58:
-        cv2.imwrite(os.path.join('coil-100-BOW/train',
+        cv2.imwrite(os.path.join('object-detection/data_process/coil-100-BOW/train',
                     class_name, file_name), img)
         train_test_count += 1
     else:
-        cv2.imwrite(os.path.join('coil-100-BOW/test',
+        cv2.imwrite(os.path.join('object-detection/data_process/coil-100-BOW/test',
                     class_name, file_name), img)
         train_test_count += 1
         if train_test_count == 72:
