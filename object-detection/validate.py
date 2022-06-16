@@ -4,7 +4,6 @@
 # 4. Phân loại
 
 
-
 import cv2
 import numpy as np
 import os
@@ -20,14 +19,16 @@ clf, classes_names, stdSlr, k, voc = joblib.load("sift500_coil100.pkl")
 
 # 2. Đọc các ảnh test và extract descriptor
 # path tới folder test
-test_path = 'coil-100-BOW/test'
+test_path = 'object-detection/data_process/coil-100-BOW/test'
 
 image_paths = []
 image_classes = []
 class_id = 0
 
+
 def imglist(path):
     return [os.path.join(path, f) for f in os.listdir(path)]
+
 
 for class_name in classes_names:
     dir = os.path.join(test_path, class_name)
