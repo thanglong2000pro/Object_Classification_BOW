@@ -7,14 +7,15 @@
 import cv2
 import numpy as np
 import os
-from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
 from sklearn.svm import SVC
 from scipy.cluster.vq import vq
 import joblib
 
 # 1. Đọc mô hình đã lưu
 # đọc mô hình đã chạy ở file train.py
-clf, classes_names, stdSlr, k, voc = joblib.load("sift500_coil100.pkl")
+clf, classes_names, stdSlr, k, voc = joblib.load(
+    "sift500_coil100_decision_tree.pkl")
 
 
 # 2. Đọc các ảnh test và extract descriptor
@@ -58,4 +59,6 @@ test_features = stdSlr.transform(test_features)
 # 4. Phân loại
 pred = clf.predict(test_features)
 accuracy = accuracy_score(image_classes, pred)
+report = classification_report(image_classes, pred)
 print(accuracy)
+# print(report)
