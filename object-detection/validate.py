@@ -15,7 +15,7 @@ import joblib
 # 1. Đọc mô hình đã lưu
 # đọc mô hình đã chạy ở file train.py
 clf, classes_names, stdSlr, k, voc = joblib.load(
-    "sift500_coil100_decision_tree.pkl")
+    "sift500_coil100_knn.pkl")
 
 
 # 2. Đọc các ảnh test và extract descriptor
@@ -38,7 +38,12 @@ for class_name in classes_names:
     image_classes += [class_id] * len(class_path)
     class_id += 1
 des_list = []
+# SIFT
 sift = cv2.SIFT_create(128)
+# BRISK
+# sift = cv2.BRISK_create(64)
+# ORB
+# sift = cv2.ORB_create(32)
 for image_path in image_paths:
     im = cv2.imread(image_path)
     # im = cv2.resize(im, (150,150))

@@ -48,8 +48,10 @@ des_list = []
 # sử dụng sift với 128 feature cho mỗi keypoint phát hiện trong ảnh
 sift = cv2.SIFT_create(128)
 # brisk = cv2.BRISK_create(30)
-
-
+# BRISK
+# sift = cv2.BRISK_create(64)
+# ORB
+# sift = cv2.ORB_create(32)
 # Bước này đọc các ảnh và áp dụng sift lên ảnh
 t1 = time.time()
 for image_path in image_paths:
@@ -72,7 +74,7 @@ descriptors_float = descriptors.astype(float)
 # phân cụm các descriptor
 
 # phân thành 500 cụm, giá trị voc trả về là 500 center của 500 cụm
-k = 500
+k = 100
 t3 = time.time()
 voc, variance = kmeans(descriptors_float, k, 1)
 t4 = time.time()
