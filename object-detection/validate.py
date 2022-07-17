@@ -15,7 +15,7 @@ import joblib
 # 1. Đọc mô hình đã lưu
 # đọc mô hình đã chạy ở file train.py
 clf, classes_names, stdSlr, k, voc = joblib.load(
-    "sift500_coil100_knn.pkl")
+    "sift500_coil100_svm.pkl")
 
 
 # 2. Đọc các ảnh test và extract descriptor

@@ -74,7 +74,7 @@ descriptors_float = descriptors.astype(float)
 # phân cụm các descriptor
 
 # phân thành 500 cụm, giá trị voc trả về là 500 center của 500 cụm
-k = 100
+k = 500
 t3 = time.time()
 voc, variance = kmeans(descriptors_float, k, 1)
 t4 = time.time()
